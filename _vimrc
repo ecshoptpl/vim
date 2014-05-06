@@ -136,11 +136,11 @@ elseif MySys() == 'windows'
     " Set helplang
     set helplang=cn
     "Fast reloading of the _vimrc
-    map <silent> <leader>ss :source ~/_vimrc<cr>
+    map <silent> <leader>ss :source $MYVIMRC<cr>
     "Fast editing of _vimrc
-    map <silent> <leader>ee :call SwitchToBuf("~/_vimrc")<cr>
+    map <silent> <leader>ee :call SwitchToBuf("$MYVIMRC")<cr>
     "When _vimrc is edited, reload it
-    autocmd! bufwritepost _vimrc source ~/_vimrc
+     autocmd! bufwritepost $MYVIMRC source $MYVIMRC 
 endif
 
 " For windows version
@@ -201,6 +201,7 @@ if !exists("g:vimrc_loaded")
         set guioptions-=L
         set guioptions-=r
         "colorscheme darkblue_my
+        colorscheme desert_my
         "hi normal guibg=#294d4a
         set cursorline
     else
@@ -680,7 +681,7 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
    """"""""""""""""""""""""""""""
    " NERDTree setting
    """"""""""""""""""""""""""""""
-   "nmap <silent> <leader>tt :NERDTreeToggle<cr>
+   nmap <silent> <leader>tt :NERDTreeToggle<cr>
 
    """"""""""""""""""""""""""""""
    " lookupfile setting
@@ -715,7 +716,7 @@ nmap <C-@>d :cs find d <C-R>=expand("<cword>")<CR><CR>
            let &tags = _tags
        endtry
 
-       " Show the matches for what is typed so far.
+      " Show the matches for what is typed so far.
        let files = map(tags, 'v:val["filename"]')
        return files
    endfunction
@@ -896,67 +897,38 @@ let g:vimrc_loaded = 1
 
  " Ctrl + H            将光标移到行首  
 
- imap <c-h> <ESC>I  
+ imap <c-h> <esc>I  
 
     
 
  " Ctrl + J            将光标移到下一行的行首  
 
- imap <c-j> <ESC>jI  
+ imap <c-j> <esc>jI  
 
     
 
  " Ctrl + K            将光标移到上一行的末尾  
 
- imap <c-k> <ESC>kA  
-
-    
+ imap <c-k> <esc>kA  
 
  " Ctrl + L            将光标移到行尾  
 
- imap <c-l> <ESC>A  
-
-    
+ imap <c-l> <esc>A  
   
- " Ctrl + Z            取代ESC模式键  
+ " jj            取代ESC模式键  
 
- imap jj <ESC>  
-
+ imap jj <esc>
     
 
  " Ctrl + S            保存文件  
 
- map <c-s> <ESC>:w<CR>  
+ map <c-s> <esc>:w<CR>  
 
- imap <c-s> <ESC>:w<CR>a  
+ imap <c-s> <esc>:w<CR>a  
 
- vmap <c-s> <ESC>:w<CR>  
-
-    
-
- " Ctrl + E            一步加载语法模板和作者、时间信息 [非插入模式]  
-
- map <c-e> <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi  
-
- vmap <c-e> <ESC>:LoadTemplate<CR><ESC>:AuthorInfoDetect<CR><ESC>Gi  
-
-    
-
- " Ctrl + E            在当前行添加C/C++/Java语言的多行注释 [插入模式]  
-
- imap <c-e> /*  */<ESC>hhi  
-
-    
-
- " nt                  打开NERDTree [非插入模式]  
-
- map nt :NERDTree<CR>  
-
-    
+ vmap <c-s> <esc>:w<CR>  
 
  " tl                  打开Taglist [非插入模式]  
 
- map tl :Tlist<CR><c-l>  
-
-    
-
+ map tl :TlistToggle<cr><c-l>  
+cd E:\xampp\htdocs\ecshop
